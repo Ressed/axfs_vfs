@@ -203,25 +203,15 @@ impl VfsNodeType {
 impl VfsNodeAttr {
     /// Creates a new `VfsNodeAttr` with the given permission mode, type, size
     /// and number of blocks.
-    pub const fn new(
-        mode: VfsNodePerm,
-        ty: VfsNodeType,
-        size: u64,
-        blocks: u64,
-        atime: usize,
-        mtime: usize,
-    ) -> Self {
+    pub const fn new(mode: VfsNodePerm, ty: VfsNodeType, size: u64, blocks: u64, atime: usize, mtime: usize) -> Self {
         Self {
             mode,
             ty,
             size,
             blocks,
             atime,
-            mtime,
+            mtime
         }
-    }
-    pub const fn new(mode: VfsNodePerm, ty: VfsNodeType, size: u64, blocks: u64) -> Self {
-        new(mode, ty, size, blocks, 0, 0)
     }
 
     /// Creates a new `VfsNodeAttr` for a file, with the default file permission.
@@ -232,7 +222,7 @@ impl VfsNodeAttr {
             size,
             blocks,
             atime: 0,
-            mtime: 0,
+            mtime: 0
         }
     }
 
@@ -245,7 +235,7 @@ impl VfsNodeAttr {
             size,
             blocks,
             atime: 0,
-            mtime: 0,
+            mtime: 0
         }
     }
 
@@ -283,6 +273,8 @@ impl VfsNodeAttr {
     pub const fn is_dir(&self) -> bool {
         self.ty.is_dir()
     }
+
+    
 }
 
 impl VfsDirEntry {
